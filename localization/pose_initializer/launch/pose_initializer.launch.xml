@@ -1,10 +1,10 @@
 <launch>
   <arg name="config_file" default="$(find-pkg-share pose_initializer)/config/pose_initializer.param.yaml"/>
-  <arg name="ndt_enabled" value="true"/>
-  <arg name="gnss_enabled" value="false"/>
-  <arg name="ekf_enabled" value="false"/>
-  <arg name="yabloc_enabled" value="false"/>
-  <arg name="stop_check_enabled" value="false"/>
+  <arg name="ndt_enabled"/>
+  <arg name="gnss_enabled"/>
+  <arg name="ekf_enabled"/>
+  <arg name="yabloc_enabled"/>
+  <arg name="stop_check_enabled"/>
 
   <arg name="sub_gnss_pose_cov" default="sub_gnss_pose_cov"/>
 
