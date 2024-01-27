@@ -10,11 +10,11 @@
 
   <node pkg="pose_initializer" exec="pose_initializer_node" name="pose_initializer_node">
     <param from="$(var config_file)"/>
-    <param name="ndt_enabled" default="true" value="$(var ndt_enabled)"/>
-    <param name="gnss_enabled" default="false" value="$(var gnss_enabled)"/>
-    <param name="ekf_enabled" default="false" value="$(var ekf_enabled)"/>
-    <param name="yabloc_enabled" default="false" value="$(var yabloc_enabled)"/>
-    <param name="stop_check_enabled" default="false" value="$(var stop_check_enabled)"/>
+    <param name="ndt_enabled" value="true"/>
+    <param name="gnss_enabled" value="false"/>
+    <param name="ekf_enabled" value="false"/>
+    <param name="yabloc_enabled" value="false"/>
+    <param name="stop_check_enabled" value="false"/>
 
     <remap from="yabloc_align" to="/localization/pose_estimator/yabloc/initializer/yabloc_align_srv"/>
     <remap from="ndt_align" to="/localization/pose_estimator/ndt_align_srv"/>
