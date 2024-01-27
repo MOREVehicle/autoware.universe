@@ -1,20 +1,18 @@
 <launch>
-  <arg name="config_file" default="$(find-pkg-share pose_initializer)/config/pose_initializer.param.yaml"/>
-  <arg name="ndt_enabled"/>
-  <arg name="gnss_enabled"/>
-  <arg name="ekf_enabled"/>
-  <arg name="yabloc_enabled"/>
-  <arg name="stop_check_enabled"/>
-
-  <arg name="sub_gnss_pose_cov" default="sub_gnss_pose_cov"/>
+  <arg name="config_file" default="$(find-pkg-share pose_initializer)/config/pose_initializer.param.yaml" doc="Path to the configuration file for pose_initializer node"/>
+  <arg name="ndt_enabled" doc="Enables or disables the NDT algorithm for pose initialization"/>
+  <arg name="gnss_enabled" doc="Enables or disables GNSS for pose initialization"/>
+  <arg name="ekf_enabled" doc="Enables or disables the EKF algorithm for pose initialization"/>
+  <arg name="yabloc_enabled" doc="Enables or disables the YABLOC algorithm for pose initialization"/>
+  <arg name="stop_check_enabled" doc="Enables or disables the stop-check mechanism for pose initialization"/>
+  <arg name="sub_gnss_pose_cov" default="sub_gnss_pose_cov" doc="Name of the GNSS pose covariance subscriber"/>
 
   <node pkg="pose_initializer" exec="pose_initializer_node" name="pose_initializer_node" output="screen">
-    <param name="ndt_enabled" value="true"/>
-    <param name="gnss_enabled" value="false"/>
-    <param name="ekf_enabled" value="false"/>
-    <param name="yabloc_enabled" value="false"/>
-    <param name="stop_check_enabled" value="false "/>
-
+    <param name="ndt_enabled" value="true" doc="Set whether the NDT algorithm is enabled"/>
+    <param name="gnss_enabled" value="false" doc="Set whether GNSS is enabled"/>
+    <param name="ekf_enabled" value="false" doc="Set whether the EKF algorithm is enabled"/>
+    <param name="yabloc_enabled" value="false" doc="Set whether the YABLOC algorithm is enabled"/>
+    <param name="stop_check_enabled" value="false" doc="Set whether the stop-check mechanism is enabled"/>
     <remap from="yabloc_align" to="/localization/pose_estimator/yabloc/initializer/yabloc_align_srv"/>
     <remap from="ndt_align" to="/localization/pose_estimator/ndt_align_srv"/>
     <remap from="stop_check_twist" to="/sensing/vehicle_velocity_converter/twist_with_covariance"/>
@@ -27,3 +25,4 @@
     <remap from="~/partial_map_load" to="/map/get_partial_pointcloud_map"/>
   </node>
 </launch>
+
